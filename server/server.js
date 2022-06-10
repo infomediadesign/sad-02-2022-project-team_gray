@@ -1,13 +1,24 @@
 const express = require("express");
 const app = express();
-const port = 8080;
+const mysql = require('mysql');
 
-app.get("/", async (req, res) => {
-  res.setHeader("Content-Type", "text/html");
-  res.status(200);
-  res.send("<h1>test group gray</h1>");
+const connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'hotelbidding'
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+connection.connect((err) => {
+  if(err){
+    console.log('Error connecting to Db');
+    return;
+  }
+  console.log('Connection established');
 });
+
+// connection.end((err) => {
+//   // The connection is terminated gracefully
+//   // Ensures all remaining queries are executed
+//   // Then sends a quit packet to the MySQL server.
+// });
