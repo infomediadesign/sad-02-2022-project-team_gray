@@ -1,0 +1,113 @@
+// page1
+.bounce {
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+  .page1 {
+      width: 100%;
+      height: 100vh;
+      background-image: url("../../../assets/homePage/pexels-asad-photo-maldives-1268855.jpeg");
+      background-repeat: no-repeat, repeat;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      .bg {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        img {
+          width: 100%;
+        }
+      }
+    
+      .page-1-heading {
+        padding: 100px 0;
+    
+        h6 {
+          font-weight: 400;
+          font-style: italic;
+        }
+    
+        h1 {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          color: var(--primary-text-color);
+          font-size: 3rem;
+          font-weight: 700;
+          line-height: 5rem;
+        }
+      }
+    
+      @media (max-width: 600px) {
+        height: auto;
+    
+        .bg {
+          display: none;
+        }
+    
+        .page-1-heading {
+          padding: 15px;
+    
+          h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 3.5rem;
+          }
+        }
+      }
+    }
+    
+    // page2
+    
+    .page2 {
+      width: 100%;
+      background-color: var(--background-light);
+    
+      .page2Heading {
+        p {
+          text-align: center;
+          color: black;
+        }
+      }
+    
+      .cart {
+        background-color: white;
+        padding: 40px 10px;
+        border-radius: 15px;
+        box-shadow: 1px 3px 6px #000000;
+        height: 100%;
+        img {
+          width: 90%;
+        }
+    
+        h5 {
+          color: var(--primary-text-color);
+        }
+    
+        p {
+          text-align: center;
+          color: var(--tertiary-text-color);
+        }
+      }
+    }
+   
+    
+    
+    
+    // page 5
+    
+   
+    

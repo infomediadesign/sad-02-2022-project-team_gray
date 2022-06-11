@@ -1,1 +1,186 @@
-<p>home-page works!</p>
+<!-- page 1 start hero page-->
+<section class="page1 pt-5">
+    <div class="container" style="margin-top: 110px;">
+      <div class="row" style="background-color: #26426470;
+      border-radius: 6px;">
+        <div class="col-md-12">
+          <div class="page-1-heading">
+            <h1 data-aos="fade-right" data-aos-delay="700" class="py-2">
+              Welcome
+            </h1>
+            <p data-aos="fade-right" data-aos-delay="1000" class="py-2" style="color: white;
+            font-size: larger;
+            font-weight: bolder;word-spacing: 10px;display: flex;
+      justify-content: center;">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
+              Lorem Ipsum has been the industry’s standard dummy text ever since the <br>
+              1500s, when an unknown printer took a galley of type and scrambled it to<br>
+              make a type specimen book. I has survived not only five centuries, but also <br>
+              the leap into electronic typesetting, remaining essentially unchanged. It was <br>
+              popularised in the 1960s with the release of Letraset sheets containing <br>
+              Lorem Ipsum passages, and more recently with desktop publishing software <br>
+              like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <div class="btn-section">
+              <i class="material-icons bounce" style="display: flex;justify-content: center;
+              color: white; font-size: 56px;cursor: pointer;" (click)="goDown()">keyboard_arrow_down</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- page 1 end -->
+  <!-- circular shape -->
+  <div class="bg-shape">
+    <img src="../../../assets/homePage/shape.svg" alt="" />
+  </div>
+  <!-- page 2 start Who we are-->
+  <section class="page2 py-3" id="targetHotel">
+    <div class="container">
+      <div class="page2Heading pt-5 d-flex flex-column align-items-center">
+        <h1 class="heading" style="color: black;font-size: 3rem;font-weight: 700;line-height: 5rem;">
+          Hotels
+        </h1>
+        <p class="py-3"
+          style="font-size: larger;font-weight: bolder;word-spacing: 10px;display: flex; justify-content: center;">
+          A delightful experience come at a price, set by you!!!
+          <br />
+          high quality service to our clients.
+        </p>
+      </div>
+  
+      <div class="row mt-2">
+        <div data-aos="fade-up" class="col-md-4 my-3">
+          <div class="cart d-flex flex-column align-items-center">
+            <img class="py-2" src="../../../assets/homePage/pexels-asad-photo-maldives-1268855.jpeg" alt="" />
+            <h5 class="py-3">BPO Related Services</h5>
+            <!-- <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos,
+              nesciunt?
+            </p> -->
+          </div>
+        </div>
+  
+        <div data-aos="fade-up" data-aos-delay="300" class="col-md-4 my-3">
+          <div class="cart d-flex flex-column align-items-center">
+            <img class="py-2" src="../../../assets/homePage/pexels-mariakray-9627077.jpeg" alt="" />
+            <h5 class="py-3">Outbound Telecalling Process</h5>
+            <!-- <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos,
+              nesciunt?
+            </p> -->
+          </div>
+        </div>
+  
+        <div data-aos="fade-up" data-aos-delay="600" class="col-md-4 my-3">
+          <div class="cart d-flex flex-column align-items-center">
+            <img class="py-2" src="../../../assets/homePage/pexels-tia-amparado-9467802 2.jpeg" alt="" />
+            <h5 class="py-3">Banking related Sales</h5>
+            <!-- <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos,
+              nesciunt?
+            </p> -->
+          </div>
+        </div>
+          <div data-aos="fade-up" class="col-md-4 my-3">
+            <div class="cart d-flex flex-column align-items-center">
+              <img class="py-2" src="../../../assets/homePage/pexels-asad-photo-maldives-1268855.jpeg" alt="" />
+              <h5 class="py-3">BPO Related Services</h5>
+              <!-- <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos,
+                nesciunt?
+              </p> -->
+            </div>
+          </div>
+  
+          <div data-aos="fade-up" data-aos-delay="300" class="col-md-4 my-3">
+            <div class="cart d-flex flex-column align-items-center">
+              <img class="py-2" src="../../../assets/homePage/pexels-mariakray-9627077.jpeg" alt="" />
+              <h5 class="py-3">Outbound Telecalling Process</h5>
+              <!-- <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos,
+                nesciunt?
+              </p> -->
+            </div>
+          </div>
+  
+          <div data-aos="fade-up" data-aos-delay="600" class="col-md-4 my-3">
+            <div class="cart d-flex flex-column align-items-center">
+              <img class="py-2" src="../../../assets/homePage/pexels-tia-amparado-9467802 2.jpeg" alt="" />
+              <h5 class="py-3">Banking related Sales</h5>
+              <!-- <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos,
+                nesciunt?
+              </p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  
+  <!-- page 2 end -->
+  
+  <!-- page 3 start services -->
+  <!-- <div id="services" class="services page3 pb-4">
+    <div class="page3Heading">
+      <div class="container">
+        <h2 class="heading text-center py-3 my-3">Services</h2>
+        <div class="products" *ngFor="let product of products">
+          <div data-aos="fade-up" class="row content mt-5">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+              <img src="{{ product.image }}" alt="" />
+            </div>
+            <div class="col-md-6">
+              <h4 class="py-2">
+                {{ product.heading }}
+              </h4>
+              <p class="pb-3">
+                {{ product.content }}
+              </p>
+              <ng-container *ngFor="let point of product.point">
+                <li class="mb-2">
+                  <span class="material-icons mr-1"> check_circle </span>
+                  {{ point }}
+                </li>
+              </ng-container> -->
+  
+  <!-- <li class="mb-2">
+                <span class="material-icons mr-1"> check_circle </span>
+                 {{ product.point }}
+              </li>
+              <li class="mb-2">
+                <span class="material-icons mr-1"> check_circle </span>
+                 {{ product.point2 }}
+              </li>
+              <li class="mb-2">
+                <span class="material-icons mr-1"> check_circle </span>
+                 {{ product.point3 }}
+              </li>
+              <li class="mb-2">
+                <span class="material-icons mr-1"> check_circle </span>
+                 {{ product.point4 }}
+              </li> -->
+  
+  <!-- <div class="btnSection">
+                <button routerLink="/apply" class="mt-2 mr-2 primary-btn">
+                  Apply now
+                </button>
+                <button routerLink="{{ product.routePath }}" class="mt-2 secondary-btn">
+                  Explore
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- page 3 end -->
+  
+  <!-- page 4 start  customer reviews-->
+  
+  <!-- page 4 end -->
+  
+  
+  <!-- page 5 end -->
