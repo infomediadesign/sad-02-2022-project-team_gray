@@ -7,7 +7,7 @@ import * as Aos from 'aos';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'hotelBidFront';
+  title = 'Hotel Bidding';
   ngOnInit() {
     Aos.init();
   }
