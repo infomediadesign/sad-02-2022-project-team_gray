@@ -1,4 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+// @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro");
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Fredoka&display=swap');
+body{
+  background-image: linear-gradient(to right, #26A4DD , #93D3EF);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Comic Neue", sans-serif !important;
+  margin: 0;
+}
+.mat-body, .mat-body-1, .mat-typography  {
+  font: 400 14px/30px Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+}
+.mat-typography p {
+  margin: 0 0 0px;
+}
+:root {
+  --primary-color: #233d98;
+  --secondary-color: #0089df;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #e9e8e8;
+  --tertiary-text-color: #838ba7;
+  --background-light: #f8faff;
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 17px;
+  line-height: 1.5; 
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+html,
+body {
+  scroll-behavior: smooth;
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.primary-btn {
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.6rem 2.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--primary-text-color);
+  padding: 0.5rem 2.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid var(--primary-text-color);
+}
+
+.errorMessage {
+  color: #e05c65;
+  font-size: 15px;
+}
+
+.heading {
+  font-weight: 600;
+  color: var(--primary-text-color);
+}
+
+.bg-shape {
+  z-index: -1;
+  position: absolute;
+  top: 150px;
+  left: 0px;
+
+  img {
+    width: 300px;
+  }
+
+  @media (max-width: 600px) {
+    top: 150px;
+
+    img {
+      width: 120px;
+    }
+  }
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #dadada;
+    background-color: #dadada;
+    border-radius: 5px;
+}
