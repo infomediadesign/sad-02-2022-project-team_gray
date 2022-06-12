@@ -1,1 +1,147 @@
-<p>bidding-page works!</p>
+<!-- page 1 start hero page-->
+<section class="page1 pt-5">
+    <div class="container" style="margin-top: 110px;">
+        <div class="row" style="background-color: #dddddd26;
+        border-radius: 6px;">
+            <div class="col-md-12">
+                <div class="page-1-heading">
+                    <h1 class="py-2">
+                        Start Bidding
+                    </h1>
+                    <p style="margin-left: 25px; color: white">A Delightful experience come at a price, set by you!!!
+                    </p>
+                    <div class="registerForm" style="margin-top: 20px;">
+                        <form [formGroup]="registerForm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Bed Type</mat-label> -->
+                                            <mat-select name="gender" placeholder="Select City"
+                                                formControlName="cityId">
+                                                <mat-option *ngFor="let type of city" [value]="type">
+                                                    {{type.cityName}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error>City is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="password">
+                                        <mat-form-field class="example-full-width" appearance="outline">
+                                            <!-- <mat-label>Choose a date</mat-label> -->
+                                            <input matInput [matDatepicker]="picker" placeholder="Select Check In Date"
+                                                formControlName="cust_check_in">
+                                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                                <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="password">
+                                        <mat-form-field class="example-full-width" appearance="outline">
+                                            <input matInput [matDatepicker]="picker1" placeholder="Select Check Out Date"
+                                                formControlName="cust_check_out">
+                                            <mat-datepicker-toggle matSuffix [for]="picker1">
+                                                <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Address</mat-label>
+                                            <input matInput placeholder="Enter address" required name="userAddress"
+                                                formControlName="userAddress">
+                                            <mat-hint>Full Address</mat-hint>
+                                            <mat-error> Address is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Guest</mat-label>
+                                            <input matInput placeholder="Enter Guest" required name="guestNo"
+                                                formControlName="guestNo">
+                                            <mat-hint>How many pepole?</mat-hint>
+                                            <mat-error>Email is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Rooms</mat-label>
+                                            <input matInput placeholder="Enter room" required name="roomNeed"
+                                                formControlName="roomNeed">
+                                            <mat-hint>How many rooms required?</mat-hint>
+                                            <mat-error>Email is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Room Type</mat-label>
+                                            <mat-select formControlName="roomType">
+                                                <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.value">
+                                                    {{ roomType.viewValue }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Bed Type</mat-label>
+                                            <mat-select formControlName="bedType">
+                                                <mat-option *ngFor="let bedType of bedTypes" [value]="bedType.value">
+                                                    {{ bedType.viewValue }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Bid Amount</mat-label>
+                                            <input matInput placeholder="Enter bid amount" required name="userBidAmount"
+                                                formControlName="userBidAmount">
+                                            <mat-hint>Put your amount</mat-hint>
+                                            <mat-error>Bid amount is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="loginBtn">
+                                        <button class="userLoginBtn" mat-raised-button (click)="submit()">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="btn-section">
+                                        <i class="material-icons bounce" style="display: flex;justify-content: center;
+                                    color: white; font-size: 56px;cursor: pointer;"
+                                            (click)="goDown()">keyboard_arrow_down</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

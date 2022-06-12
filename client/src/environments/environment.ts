@@ -12,6 +12,7 @@ export const environment = {
   hotelLogin:`${baseUrl}/auth/hotelLogin`,
   insertUserDetails:`${baseUrl}/userDetails/insertUserDetails`,
   getAllUserDetails:`${baseUrl}/userDetails/getAllUserDetails`,
+  insertUserBidDetails:`${baseUrl}/userBidDetails/insertUserBidDetails`,
 };
 
 /*
