@@ -4,17 +4,17 @@ var mysqlQuery = require('../../common/mysqlHelper')
  * This function represent insert record into hotel Master table 
  * @param {*} req 
  * @param {*} res 
- * @author Abhilash Reddy
+ * @author Abhilash Reddy, Abhinay Khalatkar
  */
 function insertHotelDetails(req, res) {
     var param = req.body;
     console.log(param);
-    var query = "INSERT INTO `hotel_master`(`hotelName`, `hotelEmail`, `hotelContactNumber`, `hotelAddress`, `cityId`, `hotelImage`,`hotelPassword`) VALUES ('" + param.hotelName + "','" + par.hotelEmail + "','" + param.hotelCoamntactNumber + "', '" + param.hotelAddress + "', '" + param.cityId + "', '" + param.hotelImage + "','" + param.hotelPassword + "')";
+    var query = `INSERT INTO hotel_master (hotelName, hotelEmail, hotelContactNumber, hotelAddress, cityId, hotelImage, hotelPassword) VALUES ('${param.hotelName}', '${param.hotelEmail}', '${param.hotelContactNumber}', '${param.hotelAddress}', '${param.cityId}', '${param.hotelImage}', '${param.hotelPassword}')`;
     mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
         else
-            return res.json({ error: false, message: "Record Insterted Successfully" })
+            return res.json({ error: false, message: result })
     })
 }
 
