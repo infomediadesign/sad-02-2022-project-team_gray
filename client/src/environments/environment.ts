@@ -10,7 +10,8 @@ export const environment = {
   getAllHotelDetails:`${baseUrl}/hotelDetails/getAllHotelDetails`,
   getAllCities:`${baseUrl}/cities/getAllCities`,
   hotelLogin:`${baseUrl}/auth/hotelLogin`,
-
+  insertUserDetails:`${baseUrl}/userDetails/insertUserDetails`,
+  getAllUserDetails:`${baseUrl}/userDetails/getAllUserDetails`,
 };
 
 /*
