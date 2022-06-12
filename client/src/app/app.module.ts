@@ -12,8 +12,9 @@ import { HotelLoginPageComponent } from './modules/hotel-login-page/hotel-login-
 import { HotelRegistrationPageComponent } from './modules/hotel-registration-page/hotel-registration-page.component';
 import { UserRegistrationPageComponent } from './modules/user-registration-page/user-registration-page.component';
 import { BiddingPageComponent } from './modules/bidding-page/bidding-page.component';
-import { AboutusPageComponent } from './aboutus-page/aboutus-page.component';
-import { ContactusPageComponent } from './contactus-page/contactus-page.component';
+import { AboutusPageComponent } from './modules/aboutus-page/aboutus-page.component';
+import { ContactusPageComponent } from './modules/contactus-page/contactus-page.component';
+
 
 @NgModule({
   declarations: [
