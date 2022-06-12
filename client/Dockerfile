@@ -1,14 +1,20 @@
-    FROM node:14.17.0-alpine as build-step
-    RUN mkdir -p /app
-    WORKDIR /app
-    COPY package.json /app
-    RUN npm install
+    FROM node:latest as node
     COPY . /app
-    RUN npm run build --prod
+    WORKDIR /app
+    RUN npm install
+    RUN npm run build
+    FROM nginx:alpine
+    EXPOSE 80
+    COPY --from=builder /app/dist/hotelBidFront /usr/share/nginx/html
+    # RUN mkdir -p /app
+    # WORKDIR /app
+    # RUN npm install
+    # COPY . .
+    # RUN npm run build --prod
 
-    FROM nginx:1.20.1
-    COPY --from=build-step /app/dist/ng-docker-example /usr/share/nginx/html
-    EXPOSE 4200:80
+    # FROM nginx:alpine
+    # COPY --from=build-step /app/dist/ng-docker-example /usr/share/nginx/html
+    # EXPOSE 4200:4200
 
 
 # # Stage 1
