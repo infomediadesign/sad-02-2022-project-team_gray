@@ -1,31 +1,58 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> User Login
+<!-- page 1 start hero page-->
+<section class="page1 pt-5">
+    <div class="container" style="margin-top: 110px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-1-heading">
+                    <h1 class="py-2">
+                        User Login
+                    </h1>
+                    <div class="loginForm">
+                        <form [formGroup]="loginForm">
+                            <div class="email">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput placeholder="Enter Email" required name="userEmail"
+                                        formControlName="userEmail">
+                                    <mat-error>Email is required
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- <div class="errorMessage"
+                    *ngIf="loginForm.controls['userName'].hasError('required') && loginForm.controls['userName'].touched">
+                    Email Id is required.
+                </div>
+                <div class="errorMessage" *ngIf="loginForm.controls['userName'].hasError('email')">
+                    Enter email in valid format.
+                </div> -->
+                            </div>
+                            <div class="password">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input type="password" matInput placeholder="Enter your password"
+                                        formControlName="userPassword" required trim>
+                                    <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button> -->
+                                    <mat-error>Password is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="loginBtn">
+                                <button class="userLoginBtn" mat-raised-button (click)="login()">Login</button>
+                            </div>
+                            <div class="forgotBtn">
+                                <p style="cursor: pointer;" routerLink="/singup">Forgot Password?</p>
+                            </div>
+                            <div class="singUp">
+                                <p style="cursor: pointer;" routerLink="/userRegister">Don't have an account?</p>
 
-        </title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-</html>
-     <body>
-         
-    
-         <div class=" user-login">
-             
-             <h1>User Login</h1>
-             <form>
-                 <input type="user" class="input-box" placeholder="Username">
-                 <input type="password" class="input-box" placeholder=" Password">
-                  <p> <span><input type="checkbox"></span>
-                  I agree to the terms of services and Policy   
-                  </p>
-                  <button type="button" class="signup-btn">Login</button>
-                  <hr>
-                    
-                   
-                    <p>Do you have an account?<a href="signup.html">Sign up</a></p>
-               
-                </form>
-              
-         </div>
-     </body>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

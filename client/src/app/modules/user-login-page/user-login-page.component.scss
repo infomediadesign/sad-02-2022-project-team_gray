@@ -1,142 +1,266 @@
-body
-{
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-color: #26A4DD ;
-    background-size: cover;
-    background-position: center;
-    align-items: center;
-    justify-content: center;
-}
-   
+// page1
 
-
-    .user-login
-
-
-{
-   width: 300px;
-   box-shadow: 0 0 3px 0 #fff(0, 0, 0, 0.3);
-   background:#26A4DD ;
-   padding: 20px;
-   margin: 8% auto 0;
-   text-align: center;
-}
-
-.User-registration-box
-{
-    width: 800px;
-    box-shadow: 0 0 3px 0 #fff(0, 0, 0, 0.3);
-    background:#26A4DD ;
-    padding: 30px;
-    margin: 10% auto 0;
-    margin-bottom: auto;
-    text-align: center;
-}
-.hotel-login
-{
-    width: 300px;
-   box-shadow: 0 0 3px 0 #fff(0, 0, 0, 0.3);
-   background:#26A4DD ;
-   padding: 20px;
-   margin: 8% auto 0;
-   text-align: center;
-}
-
-.hotel-login-form h1
-
-{
-    color: #26A4DD ;
-    margin-bottom: 10px;
-}
-
-
-
-.Hotel-registration
-{
-    width: 300px;
-    box-shadow: 0 0 3px 0 #fff(0, 0, 0, 0.3);
-    background:#26A4DD ;
-    padding: 20px;
-    margin: 8% auto 0;
-    text-align: center;
-}
-.Hotel-registration-form h1{
-    color: #26A4DD ;
-    margin-bottom: 10px;
-}
-.Hotel-registration-box
-{
-    width: 1000px;
-    
-    background:#26A4DD ;
-    padding: 8px;
-    margin: 10% auto 0;
-    margin-bottom: auto;
-    text-align: center;
-    outline: none;
-    border: none;
-}
-
-
-.sign-up-form h1
-{
-    color: #26A4DD ;
-    margin-bottom: 10px;
-}
- .input-box
-{
-  border-radius: 25px;
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
-  border: 1px solid gray;
-  outline: none;
-}
-
-.User-registration-form h1
-{
-    color: #26A4DD ;
-    margin-bottom: 10px;
-}
- 
-
-button
-{
-    color: white;
+.page1 {
     width: 100%;
-    border-radius: 10px;
-    font-size: 15px;
-    margin: 10px 0;
-    border: 1cm;
-    
-    cursor: pointer;
-}
-.signup-btn
-{
-    background-color:#26A4DD;
-}
-.register-btn
-{
-    background-color:#26a4dd;
-}
-.login-btn
-{
-    background-color: #fff;
-}
-a
-{
-    text-decoration: none;
-}
-hr
-{
-    margin-top: 20px;
-    width:80%;
-}
+    height: 100vh;
+    // background-image: url("../../../assets/homePage/pexels-asad-photo-maldives-1268855.jpeg");
+    background-repeat: no-repeat, repeat;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+
+    .bg {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .page-1-heading {
+        padding: 100px 0;
+
+        h6 {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        h1 {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            color: var(--primary-text-color);
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 5rem;
+        }
+    }
+
+    .loginForm {
+
+        .email {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .password {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .mat-form-field {
+            font-size: inherit;
+            font-weight: 400;
+            line-height: 1.125;
+            /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+            letter-spacing: normal;
+            width: 30%;
+        }
+
+        .loginBtn {
+            display: flex;
+            justify-content: center;
+
+            .userLoginBtn {
+                background: transparent;
+                color: var(--primary-text-color);
+                /* padding: 0.5rem 2.2rem; */
+                border-radius: 20px;
+                cursor: pointer;
+                border: 2px solid var(--primary-text-color);
+                width: 30%;
+            }
+        }
+
+        .forgotBtn {
+            display: flex;
+            justify-content: center;
+            margin-top: 22px;
+            color: white;
+            font-size: larger;
+            font-weight: 800;
+        }
+
+        .singUp {
+            display: flex;
+            justify-content: center;
+        }
+    }
 
 
+    @media (max-width: 600px) {
+        height: auto;
 
-   
- 
+        .bg {
+            display: none;
+        }
 
+        .page-1-heading {
+            padding: 15px;
+
+            h1 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                line-height: 3.5rem;
+            }
+        }
+    }
+}
+
+// page2
+
+.page2 {
+    width: 100%;
+    background-color: var(--background-light);
+
+    .page2Heading {
+        p {
+            text-align: center;
+            color: black;
+        }
+    }
+
+    .cart {
+        background-color: white;
+        padding: 40px 10px;
+        border-radius: 15px;
+        box-shadow: 1px 3px 6px #000000;
+        height: 100%;
+
+        img {
+            width: 90%;
+        }
+
+        h5 {
+            color: var(--primary-text-color);
+        }
+
+        p {
+            text-align: center;
+            color: var(--tertiary-text-color);
+        }
+    }
+}
+
+// *********************
+// page 3
+
+.page3 {
+    .content {
+        img {
+            width: 90%;
+            height: 310px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        h4 {
+            color: var(--primary-text-color);
+        }
+
+        p {
+            color: var(--tertiary-text-color);
+            text-align: justify;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .content {
+            img {
+                width: 95%;
+                padding-bottom: 2rem;
+            }
+
+            h3 {
+                text-align: center;
+            }
+        }
+
+        .btnSection {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+// page 4
+// *********************
+.page4 {
+    .comment-container {
+        transition: 0.5s;
+        box-shadow: 2px 2px 6px #00000036;
+        border-radius: 8px;
+
+        .comment-heading {
+            img {
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+        h6 {
+            color: var(--tertiary-text-color);
+            font-weight: 300;
+        }
+
+        p {
+            height: 130px;
+            overflow: scroll;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+    }
+
+    .comment-container:hover {
+        transform: scale(1.05);
+    }
+
+    .owl-carousel .owl-nav {
+        overflow: hidden;
+        height: 0px;
+    }
+
+    .owl-carousel .nav-btn {
+        height: 47px;
+        position: absolute;
+        width: 26px;
+        cursor: pointer;
+        top: 30% !important;
+    }
+
+    owl-carousel-child {
+        margin: 0 !important;
+    }
+}
+
+// page 5
+
+.page5 {
+    .client-img-section {
+        transition: 0.5s;
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .client-img-section:hover {
+        transform: scale(1.1);
+    }
+}
