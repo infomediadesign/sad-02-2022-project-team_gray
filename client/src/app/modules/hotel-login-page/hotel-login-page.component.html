@@ -1,0 +1,46 @@
+<!-- page 1 start hero page-->
+<section class="page1 pt-5">
+    <div class="container" style="margin-top: 110px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-1-heading">
+                    <h1 class="py-2">
+                        Hotel Login
+                    </h1>
+                    <div class="loginForm">
+                        <form [formGroup]="loginForm">
+                            <div class="email">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput placeholder="Enter Email" required name="hotelEmail"
+                                        formControlName="hotelEmail">
+                                    <mat-error>Email is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="password">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input type="password" matInput placeholder="Enter your password"
+                                        formControlName="hotelPassword" required trim>
+                                    <mat-error>Password is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="loginBtn">
+                                <button class="userLoginBtn" mat-raised-button (click)="login()">Login</button>
+                            </div>
+                            <div class="forgotBtn">
+                                <p style="cursor: pointer;" routerLink="/singup">Forgot Password?</p>
+                            </div>
+                            <div class="singUp">
+                                <p style="cursor: pointer;" routerLink="/hotelRegister">Don't have an account?</p>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -9,6 +9,7 @@ export const environment = {
   insertHotelDetails:`${baseUrl}/hotelDetails/insertHotelDetails`,
   getAllHotelDetails:`${baseUrl}/hotelDetails/getAllHotelDetails`,
   getAllCities:`${baseUrl}/cities/getAllCities`,
+  hotelLogin:`${baseUrl}/auth/hotelLogin`,
 
 };
 
