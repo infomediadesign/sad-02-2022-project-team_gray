@@ -1,0 +1,117 @@
+<!-- page 1 start hero page-->
+<section class="page1 pt-5">
+    <div class="container" style="margin-top: 110px;">
+        <div class="row" style="background-color: #dddddd26;
+        border-radius: 6px;">
+            <div class="col-md-12">
+                <div class="page-1-heading">
+                    <h1 class="py-2">
+                        Hotel Registration
+                    </h1>
+                    <div class="registerForm">
+                        <form [formGroup]="registerForm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Hotel Name</mat-label>
+                                            <input matInput placeholder="Enter Hotel name" required name="hotelName"
+                                                formControlName="hotelName">
+                                            <mat-hint>5 Star</mat-hint>
+                                            <mat-error>Hotel name is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Email Address</mat-label>
+                                            <input matInput placeholder="Enter Email Address" required name="hotelEmail"
+                                                formControlName="hotelEmail">
+                                            <mat-hint>abc@gmail.com</mat-hint>
+                                            <mat-error>Email is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Address</mat-label>
+                                            <input matInput placeholder="Enter address" required name="hotelAddress"
+                                                formControlName="hotelAddress">
+                                            <mat-hint>Eg. street no, hous</mat-hint>
+                                            <mat-error>Address is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Contact Number</mat-label>
+                                            <input matInput placeholder="Enter contact number" required
+                                                name="hotelContactNumber" formControlName="hotelContactNumber">
+                                            <mat-hint>+49 1762626626</mat-hint>
+                                            <mat-error>Contact Number is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4"
+                                    style=" display: flex; flex-wrap:wrap;align-content: center;justify-content:space-evenly;align-items: center;">
+                                    <div class="email">
+                                        <div class="imageUpload">
+                                            <input formControlName="fileSource" id="file" type="file" class="form-control"
+                                                (change)="onFileChange($event)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <!-- <mat-label>Bed Type</mat-label> -->
+                                            <mat-select name="gender" placeholder="Select City"
+                                                formControlName="cityId">
+                                                <mat-option *ngFor="let type of city" [value]="type.cityId">
+                                                    {{type.cityName}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error>City is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="email">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Password</mat-label>
+                                            <input matInput placeholder="Enter password" required name="hotelPassword"
+                                                formControlName="hotelPassword">
+                                            <mat-hint>Eg.dhjas@123</mat-hint>
+                                            <mat-error>Password is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="loginBtn">
+                                        <button class="userLoginBtn" mat-raised-button
+                                            (click)="singUp()">Submit</button>
+                                    </div>
+                                    <div class="singUp">
+                                        <p style="cursor: pointer;" routerLink="/hotelLogin">I have an account?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

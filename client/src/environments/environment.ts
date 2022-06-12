@@ -6,6 +6,10 @@ const baseUrl="http://localhost:53123";
 export const environment = {
   production: false,
   userLogin:`${baseUrl}/auth/userLogin`,
+  insertHotelDetails:`${baseUrl}/hotelDetails/insertHotelDetails`,
+  getAllHotelDetails:`${baseUrl}/hotelDetails/getAllHotelDetails`,
+  getAllCities:`${baseUrl}/cities/getAllCities`,
+
 };
 
 /*
