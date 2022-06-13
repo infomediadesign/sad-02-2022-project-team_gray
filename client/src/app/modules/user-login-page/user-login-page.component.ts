@@ -46,7 +46,8 @@ export class UserLoginPageComponent implements OnInit {
     if (this.loginForm.valid) {
       this.commonService.postSecure(environment.userLogin, this.loginForm.value).subscribe(res => {
         if (!res.error) {
-          localStorage.setItem('userId', res.userId);
+          localStorage.setItem('hotelId', res.hotelId);
+         
           this.router.navigate(['bidding/']);
         } else {
           alert('Invalid Credentials!!!')

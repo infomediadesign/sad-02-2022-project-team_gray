@@ -8,14 +8,16 @@ services:
       - "8080:8080"
     # depends_on: 
     #   - mongo
-  client:
-    container_name: client-container
-    restart: always
-    build: ./client
-    volumes: # Volume binding
-        - './client:/usr/src/app' 
-    ports: 
-        - "4200:80"
+  # client:
+  #   container_name: client-container
+  #   restart: always
+  #   build: ./client
+  #   volumes: # Volume binding
+  #       - './client:/usr/src/app' 
+  #   ports: 
+  #       - "4200:4200"
+  #   depends_on: 
+  #      - server
 
 
   

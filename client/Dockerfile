@@ -3,9 +3,11 @@
     WORKDIR /app
     RUN npm install
     RUN npm run build
+    CMD [ "ng", "serve"]
+    EXPOSE 4200:4200
     FROM nginx:alpine
     EXPOSE 80
-    COPY --from=builder /app/dist/hotelBidFront /usr/share/nginx/html
+    # COPY --from=build /app/dist/hotelBidFront /usr/share/nginx/html
     # RUN mkdir -p /app
     # WORKDIR /app
     # RUN npm install
