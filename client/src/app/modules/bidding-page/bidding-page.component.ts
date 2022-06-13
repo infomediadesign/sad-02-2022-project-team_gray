@@ -1,6 +1,9 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import * as AOS from 'aos';
 import { CommonHttpService } from 'src/app/services/common-http.service';
@@ -21,7 +24,16 @@ export interface bedType {
 })
 export class BiddingPageComponent implements OnInit {
   city: any[] = [];
+  ELEMENT_DATA: any[] = [];
+  indexList: any;
 
+  dataSource = new MatTableDataSource();
+  applyFilter(filterValue: any) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
   roomTypes: roomType[] = [
     { value: 'AC', viewValue: 'AC' },
     { value: 'NON-AC', viewValue: 'NON-AC' },
@@ -45,7 +57,13 @@ export class BiddingPageComponent implements OnInit {
     roomType: new FormControl('', [Validators.required]),
     userBidAmount: new FormControl('', [Validators.required]),
   });
+
+
+  displayedColumns = ['Id', 'hoteName', 'address', 'offeringAmount', 'yourAmount', 'Operation'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(private scroller: ViewportScroller, public commonService: CommonHttpService, public route: Router, private httpService: CommonHttpService) { // for scroll page to top
+    this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
     window.scrollTo({
       top: 0,
     });
@@ -98,6 +116,10 @@ submit() {
   } else {
     alert('Please insert all fields!!!')
   }
+}
+editCustomer(){
+}
+deleteRoom(element: any){
 }
   ngOnInit(): void {
     this.getAllCities();
