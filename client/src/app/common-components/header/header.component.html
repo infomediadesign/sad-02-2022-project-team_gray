@@ -7,56 +7,52 @@
         <ul class="nav-links ">
             <li class="d-flex">
                 <i class="material-icons" style="color: white;">home</i>
-                <p routerLink="/home" routerLinkActive="active-bg">
+                <p routerLink="/home" routerLinkActive="active-bg" (click)="toggle()">
                     Home
                 </p>
             </li>
             <li class="d-flex">
                 <i class="material-icons" style="color: white;">hotel</i>
-                <p routerLink="/hotel" routerLinkActive="active-bg">
+                <p routerLink="/home" routerLinkActive="active-bg" (click)="scrollTo(); toggle()">
                     Hotel
                 </p>
             </li>
             <li class="d-flex">
                 <i class="material-icons" style="color: white;">hub</i>
-                <p routerLink="/bidding" routerLinkActive="active-bg">
-                    <!-- <a href="#service"> -->
-                        Bidding
-                    <!-- </a> -->
-                </p>    
+                <p routerLink="/bidding" routerLinkActive="active-bg" (click)="toggle()">
+                    Bidding
+                </p>
             </li>
             <li class="d-flex">
                 <i class="material-icons" style="color: white;">newspaper</i>
-                <p routerLink="/about-us" routerLinkActive="active-bg">
+                <p routerLink="/aboutUs" routerLinkActive="active-bg" (click)="toggle()">
                     About Us
                 </p>
             </li>
             <li class="d-flex">
                 <i class="material-icons" style="color: white;">call</i>
-                <p routerLink="/contact-us" routerLinkActive="active-bg">
+                <p routerLink="/contactUs" routerLinkActive="active-bg" (click)="toggle()">
                     Contact Us
                 </p>
             </li>
-            <button
-              class="loginBtn" (click)=toggleDisplayDivIf() 
-            >
-              Login
+            <button class="loginBtn" (click)=toggleDisplayDivIf()>
+                Login
             </button>
         </ul>
 
         <!-- POP Message Function -->
 
-        <div class="loginPop" data-aos="fade-down" ata-aos-easing="linear" data-aos-duration="3500" *ngIf="!isShowDivIf">
+        <div class="loginPop" data-aos="fade-down" ata-aos-easing="linear" data-aos-duration="3500"
+            *ngIf="!isShowDivIf">
             <div class="loginBtn">
                 <div>
-                    <button  class="userLogin" (click)=userLogin()>User Login</button>
+                    <button class="userLogin" (click)=userLogin()>User Login</button>
                 </div>
                 <div>
-                    <button  class="hotelLogin" (click)=hotelLogin()>Hotel Login</button>
+                    <button class="hotelLogin" (click)=hotelLogin()>Hotel Login</button>
                 </div>
             </div>
-        </div>  
-        <div class="toggle"></div>
+        </div>
+        <div class="toggle" (click)="toggle()"></div>
     </div>
 </header>
-

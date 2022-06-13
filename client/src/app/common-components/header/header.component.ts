@@ -34,10 +34,10 @@ export class HeaderComponent implements OnInit {
   //   comment: new FormControl(),
   // })
 
-  // toggle() {
-  //   var nav = document.querySelector(".nav");
-  //   nav.classList.toggle("active");
-  // }
+  toggle() {
+    var nav = document.querySelector(".nav");
+    nav?.classList.toggle("active")
+  }
 
   // openFeedbackForm() {
   //   this.Feedbackview = true;
@@ -45,10 +45,11 @@ export class HeaderComponent implements OnInit {
   // closeFeedbackForm() {
   //   this.Feedbackview = false;
   // }
-//   scrollTo():void {
-//           setTimeout(()=>{
-//         document.querySelector('#services').scrollIntoView({ behavior: 'smooth'});
-//       },1000)
-//  }
+  scrollTo():void {
+          setTimeout(()=>{
+            document.querySelector('#targetHotel')?.scrollIntoView({ behavior: 'smooth'});
+        // document.querySelector('#targetHotel').scrollIntoView({ behavior: 'smooth'});
+      },500)
+ }
 
 }

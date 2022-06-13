@@ -59,15 +59,7 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <div class="col-md-4"
-                                    style=" display: flex; flex-wrap:wrap;align-content: center;justify-content:space-evenly;align-items: center;">
-                                    <div class="email">
-                                        <div class="imageUpload">
-                                            <input id="file" type="file" class="form-control"
-                                                (change)="onFileChange($event)">
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-4">
                                     <div class="email">
                                         <mat-form-field appearance="outline">
@@ -97,7 +89,14 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-
+                                <div class="col-md-4"
+                                    style=" display: flex; flex-wrap:wrap;align-content: center;justify-content:space-evenly;align-items: center;">
+                                    <div class="email">
+                                        <div class="imageUpload">
+                                            <input id="file" type="file" (change)="onFileChange($event)">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="loginBtn">
                                         <button class="userLoginBtn" mat-raised-button
