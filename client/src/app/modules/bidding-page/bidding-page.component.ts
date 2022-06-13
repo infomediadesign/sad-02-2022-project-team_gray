@@ -1,4 +1,4 @@
-import { ViewportScroller } from '@angular/common';
+import { DatePipe, ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,6 +24,7 @@ export interface bedType {
 })
 export class BiddingPageComponent implements OnInit {
   city: any[] = [];
+  userDetails: any;
   ELEMENT_DATA: any[] = [];
   indexList: any;
 
@@ -46,7 +47,6 @@ export class BiddingPageComponent implements OnInit {
   ];
   registerForm = new FormGroup({
     // email_id: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required]),
     cust_check_in: new FormControl('', [Validators.required]),
     cust_check_out: new FormControl('', [Validators.required]),
     cityId: new FormControl('', [Validators.required]),
@@ -62,7 +62,7 @@ export class BiddingPageComponent implements OnInit {
   displayedColumns = ['Id', 'hoteName', 'address', 'offeringAmount', 'yourAmount', 'Operation'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private scroller: ViewportScroller, public commonService: CommonHttpService, public route: Router, private httpService: CommonHttpService) { // for scroll page to top
+  constructor(private scroller: ViewportScroller, public commonService: CommonHttpService, public route: Router, private datepipe: DatePipe, private httpService: CommonHttpService) { // for scroll page to top
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
     window.scrollTo({
       top: 0,
@@ -85,43 +85,56 @@ export class BiddingPageComponent implements OnInit {
   }
 
 
-   /**
-   * getAllCities() function to get a cities
-   * @param id 
-   * @author Virendra kadam
-   */
+  /**
+  * getAllCities() function to get a cities
+  * @param id 
+  * @author Virendra kadam
+  */
   getAllCities() {
     this.httpService.getSecure(environment.getAllCities).subscribe((data) => {
       console.log(data);
       this.city = data.result
     });
   }
-    /**
+  /**
 * insertBidDetails() function to insert hotel details
 * @param id 
 * @author Virendra kadam
 */
 
-submit() {
-  if (this.registerForm.valid) {
-    this.commonService.postSecure(environment.insertUserBidDetails, this.registerForm.value).subscribe(res => {
-      if (!res.error) {
-        alert('Record Inserted Successfully!!!');
-        this.registerForm.reset();
-        this.route.navigate(["/userLogin"]);
-      } else {
-        alert('Error Occurred!!!')
+  submit(data: any) {
+    if (this.registerForm.valid) {
+      data.cust_check_in = this.datepipe.transform(data.cust_check_in, 'yyyy-MM-dd');
+      data.cust_check_out = this.datepipe.transform(data.cust_check_out, 'yyyy-MM-dd');
+      const payload = {
+        formValue: this.registerForm.value,
+        userId: this.userDetails.userId
       }
-    })
-  } else {
-    alert('Please insert all fields!!!')
+      
+      this.commonService.postSecure(environment.insertUserBidDetails, payload).subscribe(res => {
+        if (!res.error) {
+          alert('Record Inserted Successfully!!!');
+          this.registerForm.reset();
+          this.route.navigate(["/userLogin"]);
+        } else {
+          alert('Error Occurred!!!')
+        }
+      })
+    } else {
+      alert('Please insert all fields!!!')
+    }
   }
-}
-editCustomer(){
-}
-deleteRoom(element: any){
-}
+  editCustomer() {
+  }
+  deleteRoom(element: any) {
+  }
   ngOnInit(): void {
     this.getAllCities();
+    this.userDetails = this.commonService.getUser();
+    this.userDetails = JSON.parse(this.userDetails)
+    console.log(this.userDetails);
+    if (this.userDetails === null) {
+      this.route.navigate(["/userLogin"]);
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonHttpService } from 'src/app/services/common-http.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
     this.isShowDivIf = !this.isShowDivIf;  
   } 
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private commonService: CommonHttpService) { }
   userLogin(){
     this.router.navigate(['userLogin/']);
     this.isShowDivIf = !this.isShowDivIf;  
@@ -51,5 +52,8 @@ export class HeaderComponent implements OnInit {
         // document.querySelector('#targetHotel').scrollIntoView({ behavior: 'smooth'});
       },500)
  }
-
+ logout(){
+  this.commonService.removeUser();
+  this.router.navigate(['home/']);
+ }
 }
