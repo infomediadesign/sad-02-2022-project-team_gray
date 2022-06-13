@@ -44,7 +44,6 @@ login() {
     this.commonService.postSecure(environment.hotelLogin, this.loginForm.value).subscribe(res => {
       if (!res.error) {
         localStorage.setItem('employeeId', res.id);
-        console.log(res);
         this.router.navigate(['bidding/']);
       } else {
         alert('Invalid Credentials!!!')

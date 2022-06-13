@@ -12,6 +12,7 @@ let auth = require('./app/route/auth/auth.route')
 let user_details = require('./app/route/user_details/user_details.route')
 let hotel_details = require('./app/route/hotel_details/hotel_details.route')
 let city_master =  require('./app/route/city_master/city_master.route')
+let bidding_List=require( `./app/route/bidding_List/bidding_List.route`)
 
 let sqlinjection = require('sql-injection')
 
@@ -20,6 +21,7 @@ app.use('/auth', auth)
 app.use('/userDetails', user_details)
 app.use('/hotelDetails', hotel_details)
 app.use('/cities', city_master)
+app.use(`/biddingList`, bidding_List)
 
 
 // app.use('/syscon', syscon)
