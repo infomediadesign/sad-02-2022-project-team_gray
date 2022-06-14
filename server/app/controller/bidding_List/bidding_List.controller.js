@@ -21,7 +21,8 @@ function insertBids(req, res) {//insert bids into first table( NOT PARTICIPATED 
 function insertParticipatedBids(req, res) {//INSERT BIDS INTO PARTICIPATED TABLE
     var param = req.body;
     console.log(param);
-    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` ,`acceptedByUser` FROM `user_hotel_booking` AS a CROSS JOIN `hotel_bid` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId="+`${param.hotelId}`;
+    var query= "SELECT `cityId`,`userFirstName`,`userLastName`,`userBidAmount`,b.userBookingId,a.userId,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b CROSS JOIN `user_master` AS c WHERE a.userBookingId=b.userBookingId AND a.userId=c.userId AND cityId="+`${param.cityId} AND hotelId!=${param.hotelId}`
+
     mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
