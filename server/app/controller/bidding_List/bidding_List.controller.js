@@ -9,7 +9,7 @@ var mysqlQuery = require('../../common/mysqlHelper')
 function insertBids(req, res) {
     var param = req.body;
     console.log(param);
-    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId!="+`${param.hotelId}`;
+    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId!="+`${param.hotelId}`;
     mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
@@ -21,8 +21,21 @@ function insertBids(req, res) {
 function insertParticipatedBids(req, res) {
     var param = req.body;
     console.log(param);
-    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId="+`${param.hotelId}`;
+    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId="+`${param.hotelId}`;
     mysqlQuery.excecuteQuery(query, function (error, result) {
+        if (error)
+            return res.json({ error: true, message: error })
+
+        else
+            return res.json({ error: false, message: result })
+    })
+}
+function getUserData(req, res) {
+    var param = req.body;
+    console.log(param);
+    var query= 
+    "SELECT `userId`, `userFirstName`, `userLastName`, `userEmail`, `userContactNumber`, `userGender`, `userPassword` FROM `user_master` WHERE userId="+`${param.userId}`
+       mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
 
@@ -33,7 +46,10 @@ function insertParticipatedBids(req, res) {
 
 
 
+
 module.exports = {
     insertBids:insertBids,
-    insertParticipatedBids:insertParticipatedBids
+    insertParticipatedBids:insertParticipatedBids,
+    getUserData:getUserData,
+    sendBid:sendBid
 }
