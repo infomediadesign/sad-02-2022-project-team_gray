@@ -115,7 +115,6 @@ export class BiddingPageComponent implements OnInit {
         if (!res.error) {
           alert('Record Inserted Successfully!!!');
           this.registerForm.reset();
-          this.route.navigate(["/userLogin"]);
         } else {
           alert('Error Occurred!!!')
         }
