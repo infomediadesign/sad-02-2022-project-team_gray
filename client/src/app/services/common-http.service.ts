@@ -32,5 +32,14 @@ export class CommonHttpService {
   putSecure(url:any, payload:any): Observable<any> {
     return this.httpClient.put(url, payload)
   }
+  setUser(userDetails: any){
+    localStorage.setItem('currentUser', JSON.stringify(userDetails))
+  }
+  getUser(){
+    return localStorage.getItem('currentUser')
+  }
+  removeUser(){
+    localStorage.removeItem('currentUser')
+  }
 
 }

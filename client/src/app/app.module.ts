@@ -14,6 +14,7 @@ import { UserRegistrationPageComponent } from './modules/user-registration-page/
 import { BiddingPageComponent } from './modules/bidding-page/bidding-page.component';
 import { AboutusPageComponent } from './modules/aboutus-page/aboutus-page.component';
 import { ContactusPageComponent } from './modules/contactus-page/contactus-page.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { ContactusPageComponent } from './modules/contactus-page/contactus-page.
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
