@@ -9,7 +9,7 @@ var mysqlQuery = require('../../common/mysqlHelper')
 function insertBids(req, res) {//insert bids into first table( NOT PARTICIPATED )
     var param = req.body;
     console.log(param);
-    var query= "SELECT `cityId`,`userBidAmount`,`b.userBookingId`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId!="+`${param.hotelId}`;
+    var query= "SELECT `cityId`,`userBidAmount`,b.userBookingId,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId!="+`${param.hotelId}`;
     mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
@@ -59,8 +59,9 @@ function sendBid(req, res) {// to send bid take userbooking from table stored b.
 function BidsForUserTable(req, res) {// to recive all the hotel bids in user bidding table
     var param = req.body;
     console.log(param);
-    var query="SELECT hotelBidId`,`hotelBidAmount`,`hotelId`,`acceptedByUser` FROM `user_hotel_booking` AS a CROSS JOIN `hotel_bid` AS b WHERE a.userBookingId=b.userBookingId AND userId="+`${param.userId}`
-         mysqlQuery.excecuteQuery(query, function (error, result) {
+    var query="SELECT `hotelBidId`,`hotelBidAmount`,c.hotelId,`acceptedByUser`,`hotelName`,`hotelContactNumber`,`hotelAddress` FROM `user_hotel_booking` AS a CROSS JOIN `hotel_bid` AS b CROSS JOIN `hotel_master` AS c WHERE a.userBookingId=b.userBookingId AND b.hotelId=c.hotelId AND userId="+`${param.userId}`
+    
+    mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
 
