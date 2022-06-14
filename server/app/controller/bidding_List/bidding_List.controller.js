@@ -44,6 +44,19 @@ function getUserData(req, res) {
     })
 }
 
+function sendBid(req, res) {
+    var param = req.body;
+    console.log(param);
+    var query= 
+    "SELECT `userId`, `userFirstName`, `userLastName`, `userEmail`, `userContactNumber`, `userGender`, `userPassword` FROM `user_master` WHERE userId="+`${param.userId}`
+       mysqlQuery.excecuteQuery(query, function (error, result) {
+        if (error)
+            return res.json({ error: true, message: error })
+
+        else
+            return res.json({ error: false, message: result })
+    })
+}
 
 
 
