@@ -58,7 +58,7 @@ function sendBid(req, res) {// to send bid take userbooking from table stored b.
 function BidsForUserTable(req, res) {// to recive all the hotel bids in user bidding table
     var param = req.body;
     console.log(param);
-    var query= `SELECT * FROM hotel_bid WHERE userBookingId=${param.userBookingId}`
+    var query="SELECT hotelBidId`,`hotelBidAmount`,`hotelId`,`acceptedByUser` FROM `user_hotel_booking` AS a CROSS JOIN `hotel_bid` AS b WHERE a.userBookingId=b.userBookingId AND userId="+`${param.userId}`
          mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
