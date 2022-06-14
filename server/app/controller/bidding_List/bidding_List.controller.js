@@ -6,10 +6,10 @@ var mysqlQuery = require('../../common/mysqlHelper')
  * @param {*} res 
  * @author Abhinay Khalatkar
  */
-function insertBids(req, res) {
+function insertBids(req, res) {//insert bids into first table( NOT PARTICIPATED )
     var param = req.body;
     console.log(param);
-    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId!="+`${param.hotelId}`;
+    var query= "SELECT `cityId`,`userBidAmount`,`b.userBookingId`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId!="+`${param.hotelId}`;
     mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
@@ -18,10 +18,10 @@ function insertBids(req, res) {
     })
 }
 
-function insertParticipatedBids(req, res) {
+function insertParticipatedBids(req, res) {//INSERT BIDS INTO PARTICIPATED TABLE
     var param = req.body;
     console.log(param);
-    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` FROM `user_hotel_booking` AS a CROSS JOIN `bidding_master_table` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId="+`${param.hotelId}`;
+    var query= "SELECT `cityId`,`userBidAmount`,`userId`,`userAddress`, `hotelId` ,`userCheckIn`, `userCheckOut`,`guestNo`, `roomNeed`, `roomType`, `bedType` ,`acceptedByUser` FROM `user_hotel_booking` AS a CROSS JOIN `hotel_bid` AS b WHERE a.userBookingId=b.userBookingId AND cityId="+`${param.cityId}`+ " AND hotelId="+`${param.hotelId}`;
     mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
@@ -33,8 +33,7 @@ function insertParticipatedBids(req, res) {
 function getUserData(req, res) {
     var param = req.body;
     console.log(param);
-    var query= 
-    "SELECT `userId`, `userFirstName`, `userLastName`, `userEmail`, `userContactNumber`, `userGender`, `userPassword` FROM `user_master` WHERE userId="+`${param.userId}`
+    var query= "SELECT `userId`, `userFirstName`, `userLastName`, `userEmail`, `userContactNumber`, `userGender`, `userPassword` FROM `user_master` WHERE userId="+`${param.userId}`
        mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
@@ -44,12 +43,23 @@ function getUserData(req, res) {
     })
 }
 
-function sendBid(req, res) {
+function sendBid(req, res) {// to send bid take userbooking from table stored b.userbooking id from insertparticipated bids.
+    var param = req.body;
+    console.log(param); 
+    var query =`INSERT INTO hotel_bid(userBookingId, hotelBidAmount, hotelId) VALUES ('${param.userBookingId}','${param.hotelBidAmount}','${param.hotelId}')`
+       mysqlQuery.excecuteQuery(query, function (error, result) {
+        if (error)
+            return res.json({ error: true, message: error })
+
+        else
+            return res.json({ error: false, message: result })
+    })
+}
+function BidsForUserTable(req, res) {// to recive all the hotel bids in user bidding table
     var param = req.body;
     console.log(param);
-    var query= 
-    "SELECT `userId`, `userFirstName`, `userLastName`, `userEmail`, `userContactNumber`, `userGender`, `userPassword` FROM `user_master` WHERE userId="+`${param.userId}`
-       mysqlQuery.excecuteQuery(query, function (error, result) {
+    var query= `SELECT * FROM hotel_bid WHERE userBookingId=${param.userBookingId}`
+         mysqlQuery.excecuteQuery(query, function (error, result) {
         if (error)
             return res.json({ error: true, message: error })
 
@@ -57,6 +67,20 @@ function sendBid(req, res) {
             return res.json({ error: false, message: result })
     })
 }
+
+function acceptBid(req, res) {// to accept or reject bids from user table
+    var param = req.body;
+    console.log(param);
+    var query= `UPDATE hotel_bid SET acceptedByUser = ${param.rejectAccept} WHERE hotelBidId = ${param.hotelBidId}`
+         mysqlQuery.excecuteQuery(query, function (error, result) {
+        if (error)
+            return res.json({ error: true, message: error })
+
+        else
+            return res.json({ error: false, message: result })
+    })
+}
+
 
 
 
@@ -64,5 +88,7 @@ module.exports = {
     insertBids:insertBids,
     insertParticipatedBids:insertParticipatedBids,
     getUserData:getUserData,
-    sendBid:sendBid
+    sendBid:sendBid,
+    BidsForUserTable:BidsForUserTable,
+    acceptBid:acceptBid
 }

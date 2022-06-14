@@ -6,5 +6,7 @@ router.get('/bidding_List',bidding_List.insertBids);
 router.get('/participatedBidding_List',bidding_List.insertParticipatedBids);
 router.get('/getUserData',bidding_List.getUserData);
 router.post('/sendBid',bidding_List.sendBid);
+router.get('/bidsForUserTable',bidding_List.BidsForUserTable);
+router.post(`/acceptBid`,bidding_List.acceptBid);
 
 module.exports = router
