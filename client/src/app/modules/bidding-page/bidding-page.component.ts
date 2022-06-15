@@ -29,6 +29,10 @@ export class BiddingPageComponent implements OnInit {
   ONE: any[] = [];
   indexList: any;
   TWO: any[] = [];
+  isShowDivIf = true;
+  toggleDisplayDivIf() {
+    this.isShowDivIf = !this.isShowDivIf;
+  }
   dataSource = new MatTableDataSource();
   dataSource1 = new MatTableDataSource();
   dataSource2 = new MatTableDataSource();
@@ -61,11 +65,13 @@ export class BiddingPageComponent implements OnInit {
     roomType: new FormControl('', [Validators.required]),
     userBidAmount: new FormControl('', [Validators.required]),
   });
-
+  bidAmountValue = new FormGroup({
+    hotelBidAmount: new FormControl('', [Validators.required]),
+  })
 
   displayedColumns = ['Id', 'hoteName', 'address', 'offeringAmount', 'yourAmount', 'Operation'];
-  displayedHotelColumns = ['Id', 'userFirstName', 'userLastName', 'userCheckIn', 'userCheckOut', 'userBidAmount', 'guestNo', 'roomNeed', 'roomType', 'bedType', 'Operation'];
-  displayedHotel2Columns = ['Id', 'userBidAmount', 'userAddress', 'userCheckIn', 'userCheckOut', 'guestNo', 'roomNeed', 'roomType', 'bedType'];
+  displayedHotelColumns = ['userCheckIn', 'userCheckOut', 'userBidAmount', 'guestNo', 'roomNeed', 'roomType', 'bedType', 'Operation'];
+  displayedHotel2Columns = ['userBidAmount', 'userAddress', 'userCheckIn', 'userCheckOut', 'guestNo', 'roomNeed', 'roomType', 'bedType'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -73,12 +79,10 @@ export class BiddingPageComponent implements OnInit {
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
     this.dataSource1 = new MatTableDataSource<any>(this.ONE);
     this.dataSource2 = new MatTableDataSource<any>(this.TWO);
-
     window.scrollTo({
       top: 0,
     });
     //scroll
-
     // for AOS animation
     AOS.init({
       delay: 0,
@@ -87,14 +91,11 @@ export class BiddingPageComponent implements OnInit {
       easing: 'ease-in-out', // default easing for AOS animations
     });
   }
-
   goDown() {
     this.scroller.scrollToAnchor("targetHotel");
   };
   login() {
   }
-
-
   /**
   * getAllCities() function to get a cities
   * @param id 
@@ -147,7 +148,6 @@ export class BiddingPageComponent implements OnInit {
 * @param id 
 * @author Virendra kadam
 */
-
   submit(data: any) {
     if (this.registerForm.valid) {
       data.cust_check_in = this.datepipe.transform(data.cust_check_in, 'yyyy-MM-dd');
@@ -156,7 +156,6 @@ export class BiddingPageComponent implements OnInit {
         formValue: this.registerForm.value,
         userId: this.userDetails.userId
       }
-
       this.commonService.postSecure(environment.insertUserBidDetails, payload).subscribe(res => {
         if (!res.error) {
           alert('Record Inserted Successfully!!!');
@@ -169,21 +168,29 @@ export class BiddingPageComponent implements OnInit {
       alert('Please insert all fields!!!')
     }
   }
+  bidSubmit() {
+    alert('Amount Inserted Successfully!!!');
+    this.bidAmountValue.reset();
+    this.isShowDivIf = !this.isShowDivIf;
+  }
+  amountClear(){
+    this.bidAmountValue.reset();
+
+  }
   editCustomer() {
   }
   deleteRoom(element: any) {
   }
   ngOnInit(): void {
     this.getAllCities();
-
     this.userDetails = this.commonService.getUser();
     this.userDetails = JSON.parse(this.userDetails)
     console.log(this.userDetails.cityId);
     if (this.userDetails === null) {
       this.route.navigate(["/userLogin"]);
     }
-    if('userId' in this.userDetails){
-    this.getUserBids()
+    if ('userId' in this.userDetails) {
+      this.getUserBids()
     }
     if ('hotelId' in this.userDetails) {
       this.getBids();
