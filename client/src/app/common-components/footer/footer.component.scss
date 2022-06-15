@@ -68,3 +68,12 @@ a{
   text-decoration: none;
   color: white;
 }
+.loginBtn {
+  background: transparent;
+  color: var(--primary-text-color);
+  /* padding: 0.5rem 2.2rem; */
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid var(--primary-text-color);
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonHttpService } from 'src/app/services/common-http.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private commonService: CommonHttpService) { }
 
   ngOnInit(): void {
   }
+  logout(){
+    this.commonService.removeUser();
+    this.router.navigate(['home/']);
+   }
   // toggle() {
   //   var nav = document.querySelector(".nav");
   //   nav.classList.toggle("active");

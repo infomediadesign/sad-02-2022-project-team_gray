@@ -26,9 +26,13 @@ export class BiddingPageComponent implements OnInit {
   city: any[] = [];
   userDetails: any;
   ELEMENT_DATA: any[] = [];
+  ONE: any[] = [];
   indexList: any;
-
+  TWO: any[] = [];
   dataSource = new MatTableDataSource();
+  dataSource1 = new MatTableDataSource();
+  dataSource2 = new MatTableDataSource();
+
   applyFilter(filterValue: any) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
@@ -60,10 +64,16 @@ export class BiddingPageComponent implements OnInit {
 
 
   displayedColumns = ['Id', 'hoteName', 'address', 'offeringAmount', 'yourAmount', 'Operation'];
+  displayedHotelColumns = ['Id', 'userFirstName', 'userLastName', 'userCheckIn', 'userCheckOut', 'userBidAmount', 'guestNo', 'roomNeed', 'roomType', 'bedType', 'Operation'];
+  displayedHotel2Columns = ['Id', 'userBidAmount', 'userAddress', 'userCheckIn', 'userCheckOut', 'guestNo', 'roomNeed', 'roomType', 'bedType'];
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private scroller: ViewportScroller, public commonService: CommonHttpService, public route: Router, private datepipe: DatePipe, private httpService: CommonHttpService) { // for scroll page to top
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+    this.dataSource1 = new MatTableDataSource<any>(this.ONE);
+    this.dataSource2 = new MatTableDataSource<any>(this.TWO);
+
     window.scrollTo({
       top: 0,
     });
@@ -96,6 +106,42 @@ export class BiddingPageComponent implements OnInit {
       this.city = data.result
     });
   }
+  getBids() {
+    const payload = {
+      cityValue: this.userDetails
+    }
+    this.httpService.postSecure(environment.insertBids, payload).subscribe((res) => {
+      console.log(res)
+      this.ELEMENT_DATA = res.message;
+      console.log(this.ELEMENT_DATA)
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+  getHotelBids() {
+    const payload = {
+      cityValue: this.userDetails
+    }
+    this.httpService.postSecure(environment.insertParticipatedBids, payload).subscribe((res) => {
+      console.log(res)
+      this.TWO = res.message;
+      console.log(this.TWO)
+      this.dataSource2 = new MatTableDataSource(this.TWO);
+      this.dataSource2.paginator = this.paginator;
+    });
+  }
+  getUserBids() {
+    const payload = {
+      userId: this.userDetails.userId
+    }
+    this.httpService.postSecure(environment.BidsForUserTable, payload).subscribe((res) => {
+      console.log(res)
+      this.ONE = res.message;
+      console.log(this.ONE)
+      this.dataSource1 = new MatTableDataSource(this.ONE);
+      this.dataSource1.paginator = this.paginator;
+    });
+  }
   /**
 * insertBidDetails() function to insert hotel details
 * @param id 
@@ -110,7 +156,7 @@ export class BiddingPageComponent implements OnInit {
         formValue: this.registerForm.value,
         userId: this.userDetails.userId
       }
-      
+
       this.commonService.postSecure(environment.insertUserBidDetails, payload).subscribe(res => {
         if (!res.error) {
           alert('Record Inserted Successfully!!!');
@@ -129,11 +175,19 @@ export class BiddingPageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllCities();
+
     this.userDetails = this.commonService.getUser();
     this.userDetails = JSON.parse(this.userDetails)
-    console.log(this.userDetails);
+    console.log(this.userDetails.cityId);
     if (this.userDetails === null) {
       this.route.navigate(["/userLogin"]);
+    }
+    if('userId' in this.userDetails){
+    this.getUserBids()
+    }
+    if ('hotelId' in this.userDetails) {
+      this.getBids();
+      this.getHotelBids();
     }
   }
 }

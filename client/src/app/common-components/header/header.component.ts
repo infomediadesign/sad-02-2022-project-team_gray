@@ -52,8 +52,5 @@ export class HeaderComponent implements OnInit {
         // document.querySelector('#targetHotel').scrollIntoView({ behavior: 'smooth'});
       },500)
  }
- logout(){
-  this.commonService.removeUser();
-  this.router.navigate(['home/']);
- }
+ 
 }

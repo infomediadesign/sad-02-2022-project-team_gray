@@ -13,6 +13,10 @@ export const environment = {
   insertUserDetails:`${baseUrl}/userDetails/insertUserDetails`,
   getAllUserDetails:`${baseUrl}/userDetails/getAllUserDetails`,
   insertUserBidDetails:`${baseUrl}/userBid/insertUserBidDetails`,
+  insertBids:`${baseUrl}/biddingList/bidding_List`,
+  insertParticipatedBids:`${baseUrl}/biddingList/participatedBidding_List`,
+  BidsForUserTable:`${baseUrl}/biddingList/bidsForUserTable`,
+
 };
 
 /*
